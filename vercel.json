@@ -1,17 +1,27 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "services": {
+<<<<<<< HEAD
     "back": {
       "root": "back",
       "framework": "express"
     },
     "front": {
       "root": "front",
+=======
+    "backend": {
+      "root": "backend",
+      "framework": "express"
+    },
+    "frontend": {
+      "root": "frontend/frontend",
+>>>>>>> 41bdbeb611104ed15d769402bc5671ac9a0faf04
       "framework": "vite"
     }
   },
   "rewrites": [
     {
+<<<<<<< HEAD
       "source": "/auth/(.*)",
       "destination": { "service": "back" }
     },
@@ -34,3 +44,18 @@
   ]
 }
 
+=======
+      "source": "/api/(.*)",
+      "destination": {
+        "service": "backend"
+      }
+    },
+    {
+      "source": "/(.*)",
+      "destination": {
+        "service": "frontend"
+      }
+    }
+  ]
+}
+>>>>>>> 41bdbeb611104ed15d769402bc5671ac9a0faf04
