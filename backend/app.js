@@ -1,4 +1,5 @@
 const express = require('express');
+require('dotenv').config();
 const cors = require('cors');
 const authRoutes = require('./src/routes/authRoutes');
 const questoesRoutes = require('./src/routes/questoesRoutes');
@@ -13,6 +14,11 @@ app.use('/auth', authRoutes);
 app.use('/questoes', questoesRoutes);
 
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-  console.log(`Servidor rodando com sucesso na porta ${PORT}`);
-});
+
+if (require.main === module) {
+  app.listen(PORT, () => {
+    console.log(`Servidor rodando com sucesso na porta ${PORT}`);
+  });
+}
+
+module.exports = app;

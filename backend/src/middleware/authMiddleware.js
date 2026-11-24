@@ -9,7 +9,7 @@ module.exports = (req, res, next) => {
   }
 
   try {
-    const verificado = jwt.verify(token, process.env.JWT_SECRET);
+    const verificado = jwt.verify(token, process.env.JWT_SECRET || 'admin');
     req.usuario = verificado;
     next();
   } catch (err) {

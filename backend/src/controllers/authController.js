@@ -4,8 +4,15 @@ const login = async (req, res) => {
   const { usuario, senha } = req.body;
 
   // Substitua pela validação do seu banco se preferir
-  if (usuario === 'admin' && senha === '123456') {
-    const token = jwt.sign({ user: usuario }, process.env.JWT_SECRET, { expiresIn: '2h' });
+  if (
+    usuario === (process.env.AUTH_USER || 'admin') &&
+    senha === (process.env.AUTH_PASSWORD || '123456')
+  ) {
+    const token = jwt.sign(
+      { user: usuario },
+      process.env.JWT_SECRET || 'admin',
+      { expiresIn: '2h' }
+    );
     return res.json({ token });
   }
 
