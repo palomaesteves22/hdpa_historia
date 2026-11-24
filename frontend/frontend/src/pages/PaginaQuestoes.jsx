@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import Cabecalho from '../components/Cabecalho';
 import QuestaoCard from '../components/QuestaoCard';
+import API_URL from '../api';
 import './Paginas.css';
 
 export default function PaginaQuestoes() {
@@ -22,7 +23,7 @@ export default function PaginaQuestoes() {
       const token = localStorage.getItem('token');
       const queryParams = new URLSearchParams(filtros).toString();
 
-      const r = await fetch(`http://localhost:3000/questoes/enem?${queryParams}`, {
+      const r = await fetch(`${API_URL}/questoes/enem?${queryParams}`, {
         method: 'GET',
         headers: {
           'Authorization': `Bearer ${token}`

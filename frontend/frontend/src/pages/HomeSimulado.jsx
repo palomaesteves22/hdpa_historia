@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import QuestaoCard from '../components/QuestaoCard';
 import FiltroRodape from '../components/FiltroRodape';
+import API_URL from '../api';
 
 export default function HomeSimulado() {
   const [listaDeQuestoes, setListaDeQuestoes] = useState([]);
@@ -13,7 +14,7 @@ export default function HomeSimulado() {
       const token = localStorage.getItem('token');
       const queryParams = new URLSearchParams(filtros).toString();
       
-      const r = await fetch(`http://localhost:3000/questoes/enem?${queryParams}`, {
+      const r = await fetch(`${API_URL}/questoes/enem?${queryParams}`, {
         method: 'GET',
         headers: {
           'Authorization': `Bearer ${token}`,
