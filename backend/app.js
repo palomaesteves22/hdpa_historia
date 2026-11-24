@@ -10,6 +10,8 @@ app.use(cors());
 app.use(express.json());
 
 // Rotas do Sistema
+app.use('/api/auth', authRoutes);
+app.use('/api/questoes', questoesRoutes);
 app.use('/auth', authRoutes);
 app.use('/questoes', questoesRoutes);
 
